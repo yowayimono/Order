@@ -14,13 +14,14 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf()
-                .disable()
-                .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/user/**").hasAnyAuthority()
-                        .anyRequest().authenticated()
-                )
+                .disable();
+        /*
+.authorizeHttpRequests((authz) -> authz
 
-                .httpBasic(withDefaults());
+                .anyRequest().authenticated()
+        )
+                .httpBasic(withDefaults())
+*/
         return http.build();
     }
 

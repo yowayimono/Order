@@ -1,14 +1,12 @@
 package com.yowayimono.order_food.service.impl;
 
 import com.alibaba.fastjson2.JSON;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yowayimono.order_food.core.entity.Result;
 import com.yowayimono.order_food.core.utils.EncryptionUtils;
-import com.yowayimono.order_food.core.utils.JwtUtils;
+import com.yowayimono.order_food.core.utils.JwtTokenUtils;
 import com.yowayimono.order_food.core.utils.RedisUtils;
 import com.yowayimono.order_food.enitiy.User;
 import com.yowayimono.order_food.mapper.UserMapper;
@@ -17,7 +15,6 @@ import com.yowayimono.order_food.vo.*;
 import org.apache.ibatis.annotations.Select;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Field;
@@ -56,7 +53,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         }
 
         if (!isValidPhoneNumber(user.getMobile())) {
-            return Result.fail("电话号码格式不正确");
+            //return Result.fail("电话号码格式不正确");
         }
 
         // 执行注册逻辑
@@ -78,9 +75,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             return Result.fail(444,"密码错误！");
         }
 
-        String token = JwtUtils.createToken(u);
+        UUID id = UUID.randomUUID();
 
-        redisutils.setEx("TOKEN_"+token, JSON.toJSONString(u),3600*24*4, TimeUnit.DAYS);
+        String token = "token_"+id.toString();
+
+        redisutils.setEx(token, u.getId().toString(),30, TimeUnit.MINUTES);
 
         return Result.success(new TokenAndUser(token,u.getUsername()));
     }
@@ -92,6 +91,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         u.setUsername(user.getUsername());
         u.setPassword(EncryptionUtils.sha256(user.getUsername()));
         u.setMobile(user.getMobile());
+        u.setRole("用户"); //
         usermapper.insert(u);
     }
 

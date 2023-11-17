@@ -53,6 +53,11 @@ public class UserController {
         return userservice.findUser(page);
     }
 
-
+    @Operation(summary = "测试接口")
+    @ResponseBody
+    @RequestMapping(value = "/test",method = RequestMethod.GET)
+    public String test(){
+        return "hello,成功！";
+    }
 
 }
