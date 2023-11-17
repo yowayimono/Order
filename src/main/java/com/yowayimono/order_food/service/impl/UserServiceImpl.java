@@ -10,6 +10,7 @@ import com.yowayimono.order_food.core.utils.JwtTokenUtils;
 import com.yowayimono.order_food.core.utils.RedisUtils;
 import com.yowayimono.order_food.enitiy.User;
 import com.yowayimono.order_food.mapper.UserMapper;
+
 import com.yowayimono.order_food.service.UserService;
 import com.yowayimono.order_food.vo.*;
 import org.apache.ibatis.annotations.Select;
@@ -25,10 +26,9 @@ import static com.yowayimono.order_food.core.validator.Validator.*;
 
 
 @Service
-
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
     @Autowired
-    UserMapper usermapper;
+    UserMapper userMapper;
     @Autowired
     RedisUtils redisutils;
 
@@ -40,7 +40,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public Result Register(UserVo user) {
         // 查询数据库，检查用户名是否已存在
-        if (findUserByName(user.getUsername()) != null) {
+        if (userMapper.findUserByName(user.getUsername()) != null) {
             return Result.fail("用户名已存在");
         }
 
@@ -65,7 +65,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public Result Login(LoginVo user) {
-        User u =  findUserByName(user.getUsername());
+        User u =  userMapper.findUserByName(user.getUsername());
 
         if(u==null){
             return Result.fail(666,"用户不存在！");
@@ -73,6 +73,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
         if(!EncryptionUtils.checkPassWord(user.getUsername(),u.getPassword())) {
             return Result.fail(444,"密码错误！");
+        }
+
+        if(!u.getRole().equals("user")) {
+            Result.fail(2333,"非用户账号！");
         }
 
         UUID id = UUID.randomUUID();
@@ -91,21 +95,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         u.setUsername(user.getUsername());
         u.setPassword(EncryptionUtils.sha256(user.getUsername()));
         u.setMobile(user.getMobile());
-        u.setRole("用户"); //
-        usermapper.insert(u);
+        u.setRole("user"); //
+        userMapper.insert(u);
     }
 
 
-    public User findUserByName(String username) {
-        return usermapper.selectOne(new QueryWrapper<User>()
-                .eq("username", username)
-                .select("username", "password", "id", "avatar", "nickname")
-                .last("limit 1"));
-    }
+ 
 
     @Override
     public  Result findUser(PageSelect page){
-        List<User> userlist = usermapper.findUsers(page.getPagesize(), page.getOffect());
+        List<User> userlist = userMapper.findUsers(page.getPagesize(), page.getOffect());
 
         List<UserInfo> result = new ArrayList<>();
         for (User user : userlist) {
@@ -117,11 +116,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
 
-    @Select("SELECT * FROM or_user WHERE id = #{id}")
-    public User findUserById(int id) {
-        return usermapper.selectOne(new QueryWrapper<User>()
-                .eq("id", id));
-    }
+
     @Override
     public Result updateUser(UserInfo user) {
         String username = user.getUsername(); // 获取用户ID
@@ -148,10 +143,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             UpdateWrapper<User> updateWrapper = new UpdateWrapper<>();
             updateWrapper.eq("username", username);
             // 执行更新操作
-            User u =findUserByName(username);
+            User u =userMapper.findUserByName(username);
 
             u=modelmapper.map(user,u.getClass());
-            usermapper.update(u, updateWrapper);
+            userMapper.update(u, updateWrapper);
         }
         return Result.success("更新成功！");
     }

@@ -5,6 +5,7 @@ import com.auth0.jwt.interfaces.Claim;
 import com.yowayimono.order_food.core.entity.Result;
 import com.yowayimono.order_food.core.utils.JwtTokenUtils;
 import com.yowayimono.order_food.core.utils.RedisUtils;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
@@ -41,6 +42,7 @@ public class TokenFilter implements WebMvcConfigurer {
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                 return false;
             }
-        }).excludePathPatterns("/user/login","/user/register");
+        }).addPathPatterns("/user/**")
+                .excludePathPatterns("/user/login","/user/register","/admin/login","/admin/register");
     }
 }

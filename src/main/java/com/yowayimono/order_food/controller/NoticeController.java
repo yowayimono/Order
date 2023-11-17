@@ -12,6 +12,7 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 @Tag(name = "通知管理")
 @RestController
+@RequestMapping("/admin")
 public class NoticeController {
     @Autowired
     NoticeMapper noticemapper;

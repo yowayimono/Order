@@ -16,8 +16,8 @@ public interface UserService {
     Result findUser(PageSelect page);
     Result Login(LoginVo user);
 
-    Result updateUser(UserInfo user);
 
 
+     Result updateUser(UserInfo user);
 
 }
