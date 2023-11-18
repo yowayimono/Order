@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yowayimono.order_food.core.entity.Result;
 import com.yowayimono.order_food.core.utils.EncryptionUtils;
-import com.yowayimono.order_food.core.utils.JwtTokenUtils;
+
 import com.yowayimono.order_food.core.utils.RedisUtils;
 import com.yowayimono.order_food.enitiy.User;
 import com.yowayimono.order_food.mapper.UserMapper;
@@ -79,11 +79,18 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             Result.fail(2333,"非用户账号！");
         }
 
+        if(redisutils.get(u.getId().toString())!=null){
+            // 判断是否已经登录过，这里不判断很可
+            return Result.fail(444,"已经登陆过了亲~");
+        }
+
         UUID id = UUID.randomUUID();
 
         String token = "token_"+id.toString();
 
-        redisutils.setEx(token, u.getId().toString(),30, TimeUnit.MINUTES);
+        redisutils.setEx( token,u.getId().toString(),30, TimeUnit.MINUTES);
+
+        redisutils.setEx( u.getId().toString(),token,30, TimeUnit.MINUTES);
 
         return Result.success(new TokenAndUser(u.getId(),token,u.getUsername()));
     }

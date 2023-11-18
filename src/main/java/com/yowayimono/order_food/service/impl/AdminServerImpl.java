@@ -76,11 +76,18 @@ public class AdminServerImpl implements AdminService {
             return Result.fail(233,"没有权限，非管理员用户!"+u.getRole());
         }
 
+        if(redisutils.get(u.getId().toString())!=null){
+            // 判断是否已经登录过，这里不判断很可
+            return Result.fail(444,"已经登陆过了亲~");
+        }
+
         UUID id = UUID.randomUUID();
 
         String token = "token_"+id.toString();
 
-        redisutils.setEx(token, u.getId().toString(),30, TimeUnit.MINUTES);
+        redisutils.setEx( token,u.getId().toString(),30, TimeUnit.MINUTES);
+
+        redisutils.setEx( u.getId().toString(),token,30, TimeUnit.MINUTES);
 
         return Result.success(new TokenAndUser(u.getId(),token,u.getUsername()));
     }

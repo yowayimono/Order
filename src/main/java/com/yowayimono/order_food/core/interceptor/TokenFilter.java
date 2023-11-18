@@ -34,7 +34,11 @@ public class TokenFilter implements WebMvcConfigurer {
             @Override
             public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
                 String token = request.getHeader("token");
-                if(token != null && redisUtils.get(token)!=null){
+                if(token != null &&redisUtils.get(token)!=null ){
+
+
+
+
                     redisUtils.expire(token,30, TimeUnit.MINUTES);
                     return true;
                 }

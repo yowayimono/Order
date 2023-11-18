@@ -1,50 +1,84 @@
+
 package com.yowayimono.order_food.core.utils;
+import io.jsonwebtoken.*;
+import org.apache.tomcat.util.codec.binary.Base64;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTVerifier;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.interfaces.Claim;
-import com.auth0.jwt.interfaces.DecodedJWT;
-import com.yowayimono.order_food.enitiy.User;
-
-
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+import java.security.Key;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * jwt
+ */
 public class JwtTokenUtils {
 
-    private static final String SECRET = "jwtSECRET"; // 密钥
-
-    private static final long EXPIRATION = 3600L; // 3600 秒
-
-    // 生成 token
-    public static String createToken(User user) {
-        Date expireDate = new Date(System.currentTimeMillis() + EXPIRATION * 1000);
-        Map<String, Object> map = new HashMap<>();
-        map.put("alg", "HS256");
-        map.put("typ", "JWT");
-        System.out.println(user+"user");
-        String token = JWT.create()
-                .withClaim("id", user.getId())
-                .withClaim("username", user.getUsername())
-                .withClaim("password", user.getPassword())
-                .withExpiresAt(expireDate)
-                .withIssuedAt(new Date())
-                .sign(Algorithm.HMAC256(SECRET));
-
-        return token;
+    /**
+     * 生成 token
+     *
+     * @param claims    自定义的 map
+     * @param ttl 过期时间
+     * @return
+     */
+    public static String createToken(Map<String,Object> claims, Long ttl) {
+        Key key = generateKey();
+        SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
+        Long nowMillis = System.currentTimeMillis(); //生成JWT的时间
+        JwtBuilder builder = Jwts.builder()
+                .setHeaderParam("typ", "JWT") //设置header
+                .setHeaderParam("alg", "HS256")
+                .setClaims(claims) //设置payload的键值对
+                // .setIssuedAt(now) //设置iat
+                // .setIssuer("vue-api")
+                .signWith(signatureAlgorithm, key); //签名，需要算法和key
+        if (ttl != null && ttl >= 0) {
+            Long expMillis = nowMillis + ttl * 1000;
+            Date exp = new Date(expMillis);
+            builder.setExpiration(exp); //设置过期时间
+        }
+        return builder.compact();
     }
 
-    // 校验 token
-    public static Map<String, Claim> verifyToken(String token) {
-        DecodedJWT jwt = null;
-        try {
-            JWTVerifier verifier = JWT.require(Algorithm.HMAC256(SECRET)).build();
-            jwt = verifier.verify(token);
-        } catch (Exception e) {
+    /**
+     * 生成 token ，没有过期时间
+     *
+     * @param claims 自定义的 map
+     * @return
+     */
+    public static String createToken(Map<String,Object> claims) {
+        return createToken(claims, null);
+    }
+
+    /**
+     * 解密 jwt
+     * @param jwt 创建的 jwt 字符串
+     * @return
+     */
+    public static Claims parse(String jwt) {
+
+        if (jwt == null) {
             return null;
         }
-        return jwt.getClaims();
+
+        try {
+            return Jwts.parser()
+                    .setSigningKey(generateKey())     //此处的key要与之前创建的key一致
+                    .parseClaimsJws(jwt)
+                    .getBody();
+        }catch (ExpiredJwtException e){
+            return null;
+        }
+    }
+
+    /**
+     * 获取 key
+     *
+     * @return
+     */
+    private static SecretKey generateKey() {
+        String stringKey = "0503zzz";
+        byte[] encodedKey = Base64.decodeBase64(stringKey);
+        return new SecretKeySpec(encodedKey, 0, encodedKey.length, "AES");
     }
 }

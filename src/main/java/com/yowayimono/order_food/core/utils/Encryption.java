@@ -1,11 +1,23 @@
 package com.yowayimono.order_food.core.utils;
 
+import io.netty.util.internal.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import javax.crypto.Cipher;
+import java.security.KeyFactory;
+import java.security.PublicKey;
+import java.security.interfaces.RSAPublicKey;
+import java.security.spec.X509EncodedKeySpec;
+import java.util.Arrays;
+import java.util.StringJoiner;
+import java.util.logging.StreamHandler;
 
-    @Component
+import static org.apache.tomcat.util.net.SSLHostConfigCertificate.Type.RSA;
+
+
+@Component
     public class Encryption {
 
 
@@ -16,6 +28,7 @@ import org.springframework.stereotype.Component;
         public boolean verifyPassword(String rawPassword, String encodedPassword) {
             return passwordEncoder.matches(rawPassword, encodedPassword);
         }
+
 
 
     }
