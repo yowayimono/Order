@@ -40,7 +40,7 @@ public class UserController {
 
 
     @Operation(summary = "更新用户信息")
-    @RequestMapping(value = "updateuser-info",method = RequestMethod.POST)
+    @RequestMapping(value = "UpdateInfo",method = RequestMethod.POST)
     @ResponseBody
     public Result UpdateUser(@RequestBody UserInfo user) {
         return userservice.updateUser(user);
