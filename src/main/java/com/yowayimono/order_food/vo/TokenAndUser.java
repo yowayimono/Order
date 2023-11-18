@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class TokenAndUser {
+    private  Long id;
     private String token;
     private String user;
 }

@@ -42,7 +42,7 @@ public class TokenFilter implements WebMvcConfigurer {
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                 return false;
             }
-        }).addPathPatterns("/user/**")
+        }).addPathPatterns("/user/**","/admin/**")
                 .excludePathPatterns("/user/login","/user/register","/admin/login","/admin/register");
     }
 }

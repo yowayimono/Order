@@ -67,7 +67,7 @@ public class AdminServerImpl implements AdminService {
             return Result.fail(666,"用户不存在！");
         }
 
-        if(!EncryptionUtils.checkPassWord(user.getUsername(),u.getPassword())) {
+        if(!EncryptionUtils.checkPassWord(user.getPassword(),u.getPassword())) {
             return Result.fail(444,"密码错误！");
         }
         System.out.println(u);
@@ -82,7 +82,7 @@ public class AdminServerImpl implements AdminService {
 
         redisutils.setEx(token, u.getId().toString(),30, TimeUnit.MINUTES);
 
-        return Result.success(new TokenAndUser(token,u.getUsername()));
+        return Result.success(new TokenAndUser(u.getId(),token,u.getUsername()));
     }
 
 
@@ -90,7 +90,7 @@ public class AdminServerImpl implements AdminService {
     private void AddrAdmin(UserVo user) {
         User u = new User();
         u.setUsername(user.getUsername());
-        u.setPassword(EncryptionUtils.sha256(user.getUsername()));
+        u.setPassword(EncryptionUtils.sha256(user.getPassword()));
         u.setMobile(user.getMobile());
         u.setRole("admin"); //
         adminmapper.insert(u);

@@ -57,6 +57,18 @@ public class CommentController {
     public Result deleteCommentById(@PathVariable Long id) {
         return commentService.deleteCommentById(id);
     }
+    @Operation(summary = "点赞评论")
+    @RequestMapping(value = "/like/{commentId}/{userId}", method = RequestMethod.POST)
+    @ResponseBody
+    public Result likeComment(@PathVariable Long commentId, @PathVariable Long userId) {
+        return commentService.likeComment(commentId, userId);
+    }
 
-    // Additional methods can be added here
+    @Operation(summary = "获取评论的点赞用户")
+    @RequestMapping(value = "/likedUsers/{commentId}", method = RequestMethod.GET)
+    @ResponseBody
+    public Result getLikedUsers(@PathVariable Long commentId) {
+        return commentService.getLikedUsers(commentId);
+    }
+
 }

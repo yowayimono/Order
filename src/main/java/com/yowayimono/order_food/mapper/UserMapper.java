@@ -14,6 +14,6 @@ public interface UserMapper extends BaseMapper<User> {
 
     @Select("SELECT * FROM or_user WHERE id = #{id}")
     User findUserById(int id);
-    @Select("SELECT username, password, id, avatar, nickname, role FROM user WHERE username = #{username} LIMIT 1")
+    @Select("SELECT username, password, id, avatar, nickname, role FROM or_user WHERE username = #{username} LIMIT 1")
     User findUserByName(@Param("username") String username);
 }

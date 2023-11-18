@@ -9,6 +9,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -27,6 +29,7 @@ public class ThingWishServiceImpl implements ThingWishService {
     public Result insertThingWish(ThingWishVo thingwish) {
         try {
             ThingWish tw = modelMapper.map(thingwish, ThingWish.class);
+            // tw.set(Timestamp.valueOf(LocalDateTime.now()).toLocalDateTime());
             int result = thingWishMapper.insertThingWish(tw);
             if (result > 0) {
                 return Result.success(666, "插入成功！");

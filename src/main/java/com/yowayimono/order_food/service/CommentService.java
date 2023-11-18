@@ -17,4 +17,8 @@ public interface CommentService {
     Result deleteCommentById(Long id);
 
     Result countCommentsByThingId(Long thingId);
+
+    Result likeComment(Long commentId, Long userId);
+
+    Result getLikedUsers(Long commentId);
 }

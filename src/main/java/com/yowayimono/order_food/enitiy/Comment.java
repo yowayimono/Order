@@ -32,5 +32,8 @@ public class Comment {
     @TableField(value = "thingId")
     private Long thingId;
 
+    @TableField(value = "likedUserIds")
+    private String likedUserIds;
+
 
 }

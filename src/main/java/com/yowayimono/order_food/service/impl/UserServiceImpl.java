@@ -71,7 +71,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             return Result.fail(666,"用户不存在！");
         }
 
-        if(!EncryptionUtils.checkPassWord(user.getUsername(),u.getPassword())) {
+        if(!EncryptionUtils.checkPassWord(user.getPassword(),u.getPassword())) {
             return Result.fail(444,"密码错误！");
         }
 
@@ -85,7 +85,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
         redisutils.setEx(token, u.getId().toString(),30, TimeUnit.MINUTES);
 
-        return Result.success(new TokenAndUser(token,u.getUsername()));
+        return Result.success(new TokenAndUser(u.getId(),token,u.getUsername()));
     }
 
 
@@ -93,7 +93,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     private void AddrUser(UserVo user) {
         User u = new User();
         u.setUsername(user.getUsername());
-        u.setPassword(EncryptionUtils.sha256(user.getUsername()));
+        u.setPassword(EncryptionUtils.sha256(user.getPassword()));
         u.setMobile(user.getMobile());
         u.setRole("user"); //
         userMapper.insert(u);
