@@ -30,15 +30,18 @@ public class ThingServiceImpl implements ThingService {
     @Override
     public Result insertThing(ThingVo thingVo) {
         try {
+            System.out.println(thingVo.toString());
             Thing thing = modelMapper.map(thingVo, Thing.class);
             thing.setCreateTime(Timestamp.valueOf(LocalDateTime.now()).toLocalDateTime());
+            System.out.println(thing.toString());
             int result = thingMapper.insert(thing);
             if (result > 0) {
                 return Result.success(666, "插入成功！", thing);
             } else {
-                return Result.fail(4444, "插入失败！");
+                return Result.fail(44444, "插入失败！");
             }
         } catch (Exception e) {
+            System.out.println(e);
             return Result.fail(4444, "插入失败！");
         }
     }

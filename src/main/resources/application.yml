@@ -29,3 +29,5 @@ springdoc:
 
 
 
+File:
+  uploadPath: ${BASE_LOCATION}\upload\tmp

@@ -34,7 +34,6 @@ public class AdminController {
     @ResponseBody
     public Result Register(@RequestBody UserVo user){
         return adminService.Register(user);
-
     }
 
     @Operation(summary = "分页查询用户")

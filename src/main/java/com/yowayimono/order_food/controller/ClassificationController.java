@@ -19,14 +19,14 @@ public class ClassificationController {
     @ResponseBody
     @Operation(summary = "添加分类")
     @RequestMapping(value = "/addClassification", method = RequestMethod.POST)
-    public Result addClassification(@Param("title") String title) {
+    public Result addClassification(@RequestParam("title") String title) {
         return classificationService.addClassification(title);
     }
 
     @ResponseBody
     @Operation(summary = "删除分类")
     @RequestMapping(value = "/deleteClassificationByTitle", method = RequestMethod.POST)
-    public Result deleteClassificationByTitle(@Param("title") String title) {
+    public Result deleteClassificationByTitle(@RequestParam("title") String title) {
         return classificationService.deleteClassificationByTitle(title);
     }
 
@@ -54,7 +54,7 @@ public class ClassificationController {
     @ResponseBody
     @Operation(summary = "更新分类标题")
     @RequestMapping(value = "/updateClassification", method = RequestMethod.PUT)
-    public Result updateClassification(@Param("oldTitle") String oldTitle, @Param("newTitle") String newTitle) {
+    public Result updateClassification(@RequestParam("oldTitle") String oldTitle, @RequestParam("newTitle") String newTitle) {
         return classificationService.updateClassification(oldTitle, newTitle);
     }
 

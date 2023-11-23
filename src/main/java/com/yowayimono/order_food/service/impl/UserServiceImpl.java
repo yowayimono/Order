@@ -14,11 +14,16 @@ import com.yowayimono.order_food.mapper.UserMapper;
 import com.yowayimono.order_food.service.UserService;
 import com.yowayimono.order_food.vo.*;
 import lombok.extern.slf4j.Slf4j;
+import okio.FileMetadata;
 import org.apache.ibatis.annotations.Select;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -33,7 +38,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Autowired
     RedisUtils redisutils;
 
-
+    //@Value("${File.uploadPath}")
+    private String uploadPath = "/upload";
     ModelMapper modelmapper;
     public UserServiceImpl() {
         modelmapper = new ModelMapper();
@@ -126,6 +132,83 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
 
 
+
+
+    @Override
+    public Result updateUser(UserInfo user) {
+        String username = user.getUsername(); // 获取用户ID
+        // 构建更新的字段映射
+        Map<String, Object> updateFields = new HashMap<>();
+
+        // 使用反射获取所有字段
+        Field[] fields = user.getClass().getDeclaredFields();
+        for (Field field : fields) {
+            field.setAccessible(true);
+            try {
+                Object value = field.get(user);
+                if (value != null) {
+                    updateFields.put(field.getName(), value);
+                }
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+
+        // 更新用户信息，including avatar
+        if (!updateFields.isEmpty()) {
+            // 构建更新条件
+            UpdateWrapper<User> updateWrapper = new UpdateWrapper<>();
+            updateWrapper.eq("username", username);
+
+            // Handle avatar update
+            if (updateFields.containsKey("avatarFile")) {
+                MultipartFile avatarFile = (MultipartFile) updateFields.get("avatarFile");
+
+                try {
+                    // Save the avatar file
+                    String newFileName = saveAvatar(avatarFile);
+                    // Update the user's avatar field
+                    updateFields.put("avatar", newFileName);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    return Result.fail("更新头像失败！");
+                }
+            }
+
+            // 执行更新操作
+            User u = userMapper.findUserByName(username);
+            u = modelmapper.map(user, u.getClass());
+            userMapper.update(u, updateWrapper);
+        }
+        return Result.success("更新成功！");
+    }
+
+    // Save avatar method
+    private String saveAvatar(MultipartFile file) throws IOException {
+
+        String newFileName = null;
+        if (file != null && !file.isEmpty()) {
+            // 存文件
+            String oldFileName = file.getOriginalFilename();
+            String randomStr = UUID.randomUUID().toString();
+            newFileName = randomStr + oldFileName.substring(oldFileName.lastIndexOf("."));
+            String filePath = uploadPath + File.separator + "avatar" + File.separator + newFileName;
+            File destFile = new File(filePath);
+            if (!destFile.getParentFile().exists()) {
+                destFile.getParentFile().mkdirs();
+            }
+            file.transferTo(destFile);
+        }
+        return newFileName;
+
+
+
+
+    }
+
+
+    /*
+
     @Override
     public Result updateUser(UserInfo user) {
         String username = user.getUsername(); // 获取用户ID
@@ -159,5 +242,5 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         }
         return Result.success("更新成功！");
     }
-
+*/
 }

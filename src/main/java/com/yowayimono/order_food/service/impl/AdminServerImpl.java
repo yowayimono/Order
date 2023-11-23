@@ -10,6 +10,7 @@ import com.yowayimono.order_food.mapper.UserMapper;
 
 import com.yowayimono.order_food.service.AdminService;
 import com.yowayimono.order_food.vo.*;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 import static com.yowayimono.order_food.core.validator.Validator.*;
-
+@Slf4j
 @Service
 public class AdminServerImpl implements AdminService {
     @Autowired

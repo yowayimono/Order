@@ -6,6 +6,7 @@ import com.yowayimono.order_food.mapper.ClassificationMapper;
 import com.yowayimono.order_food.service.ClassificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -52,7 +53,7 @@ public class ClassificationServiceImpl implements ClassificationService {
     }
 
     @Override
-    public Result updateClassification(String oldTitle, String newTitle) {
+    public Result updateClassification(String oldTitle,  String newTitle) {
         try {
             Classification classification = classificationMapper.selectClassificationByTitle(oldTitle);
 

@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -40,6 +41,9 @@ public class User {
     private BigDecimal score;
 
     private String avatar;
+
+    @TableField(exist = false)
+    private MultipartFile avatarFile;
 
     private String token;
 

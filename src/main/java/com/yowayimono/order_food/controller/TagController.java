@@ -36,35 +36,37 @@ public class TagController {
     @ResponseBody
     @Operation(summary="添加标签")
     @RequestMapping(value = "/addtag",method = RequestMethod.POST)
-    public Result AddTag(@Param("title") String TagTitle) {
+    public Result AddTag(@RequestParam("title") String TagTitle) {
+        System.out.println(TagTitle);
         return tagService.AddTag(TagTitle);
     }
 
     @ResponseBody
     @Operation(summary="删除标签")
     @RequestMapping(value = "/deltag", method = RequestMethod.POST)
-    public Result DelTag(String tagTitle) {
+    public Result DelTag(@RequestParam("title") String tagTitle) {
         return tagService.DelTag(tagTitle);
     }
 
     @ResponseBody
     @Operation(summary="查找标签")
     @RequestMapping(value = "/findtag", method = RequestMethod.GET)
-    public Result FindTag(PageSelect page) {
+    public Result FindTag(@RequestBody PageSelect page) {
+
         return tagService.FindTag(page);
     }
 
     @ResponseBody
     @Operation(summary="根据名称查找标签")
     @RequestMapping(value = "/findtagbyname", method = RequestMethod.GET)
-    public Result FindTagByName(String tagTitle) {
+    public Result FindTagByName(@RequestParam("title") String tagTitle) {
         return FindTagByName(tagTitle);
     }
 
     @ResponseBody
     @Operation(summary="按部分匹配查找标签")
     @RequestMapping(value = "/match-tag", method = RequestMethod.GET)
-    public Result MatchTag(@Param("term") String term) {
+    public Result MatchTag(@RequestParam("term") String term) {
         return tagService.MatchTag(term);
     }
 }
