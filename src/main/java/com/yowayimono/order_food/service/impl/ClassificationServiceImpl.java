@@ -104,7 +104,7 @@ public class ClassificationServiceImpl implements ClassificationService {
         }
     }
 
-        // Method to add a new classification
+
         @Override
         public Result addClassification(String title) {
             Classification classification = new Classification();
@@ -117,7 +117,7 @@ public class ClassificationServiceImpl implements ClassificationService {
             return Result.fail(4444, "添加失败！");
         }
 
-        // Method to delete a classification by title
+
         @Override
         public Result deleteClassificationByTitle(String title) {
             Classification classification = classificationMapper.selectClassificationByTitle(title);

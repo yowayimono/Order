@@ -5,10 +5,10 @@ import com.yowayimono.order_food.core.entity.Result;
 import com.yowayimono.order_food.vo.ThingWishVo;
 
 public interface ThingWishService {
-    // Create
+
     Result insertThingWish(ThingWishVo thingwish);
 
-    // Read
+
     Result selectThingWishById(Long id);
 
 
@@ -17,10 +17,9 @@ public interface ThingWishService {
 
     Result selectThingWishesByThingId(Long thingId);
 
-    // Update
 
 
-    // Delete
+
     Result deleteThingWishById(Long id);
 
     Result deleteThingWishesByUserId(Long userId);

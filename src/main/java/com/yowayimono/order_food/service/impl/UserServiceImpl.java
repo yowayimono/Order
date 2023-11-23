@@ -13,6 +13,7 @@ import com.yowayimono.order_food.mapper.UserMapper;
 
 import com.yowayimono.order_food.service.UserService;
 import com.yowayimono.order_food.vo.*;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Select;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 
 import static com.yowayimono.order_food.core.validator.Validator.*;
 
-
+@Slf4j
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
     @Autowired
@@ -40,6 +41,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public Result Register(UserVo user) {
         // 查询数据库，检查用户名是否已存在
+        log.warn(user.toString());
         if (userMapper.findUserByName(user.getUsername()) != null) {
             return Result.fail("用户名已存在");
         }
@@ -53,7 +55,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         }
 
         if (!isValidPhoneNumber(user.getMobile())) {
-            //return Result.fail("电话号码格式不正确");
+            return Result.fail("电话号码格式不正确");
         }
 
         // 执行注册逻辑
@@ -66,7 +68,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public Result Login(LoginVo user) {
         User u =  userMapper.findUserByName(user.getUsername());
-
+        log.warn(u.toString());
         if(u==null){
             return Result.fail(666,"用户不存在！");
         }

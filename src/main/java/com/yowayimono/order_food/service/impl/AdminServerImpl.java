@@ -35,7 +35,7 @@ public class AdminServerImpl implements AdminService {
 
     @Override
     public Result Register(UserVo user) {
-        // 查询数据库，检查用户名是否已存在
+
         if (findUserByName(user.getUsername()) != null) {
             return Result.fail("用户名已存在");
         }
