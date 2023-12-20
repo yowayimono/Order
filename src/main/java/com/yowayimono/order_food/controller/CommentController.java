@@ -7,9 +7,10 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.Cacheable;
 
 @RestController
-@Tag(name = "Comment管理")
+@Tag(name = "评论管理")
 @RequestMapping(value = "/user/comment")
 public class CommentController {
 
@@ -17,12 +18,13 @@ public class CommentController {
     private CommentService commentService;
 
     @Operation(summary = "添加Comment")
-    @RequestMapping(value = "/insert", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public Result insertComment(@RequestBody CommentVo commentVo) {
         return commentService.insertComment(commentVo);
     }
 
+    @Cacheable("comments")
     @Operation(summary = "获取Comment详情")
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
     @ResponseBody
@@ -30,19 +32,19 @@ public class CommentController {
         return commentService.selectCommentById(id);
     }
 
-
-    @Operation(summary = "获取某个Thing下的所有Comments")
-    @RequestMapping(value = "/getByThingId/{thingId}", method = RequestMethod.GET)
+    @Cacheable("comments")
+    @Operation(summary = "获取某个Product下的所有Comments")
+    @RequestMapping(value = "/getByProductId/{ProductId}", method = RequestMethod.GET)
     @ResponseBody
-    public Result getCommentsByThingId(@PathVariable Long thingId) {
-        return commentService.selectCommentsByThingId(thingId);
+    public Result getCommentsByProductId(@PathVariable Long ProductId) {
+        return commentService.selectCommentsByProductId(ProductId);
     }
 
-    @Operation(summary = "统计某个Thing下的评论数")
-    @RequestMapping(value = "/countByThingId/{thingId}", method = RequestMethod.GET)
+    @Operation(summary = "统计某个Product下的评论数")
+    @RequestMapping(value = "/countByProductId/{ProductId}", method = RequestMethod.GET)
     @ResponseBody
-    public Result countCommentsByThingId(@PathVariable Long thingId) {
-        return commentService.countCommentsByThingId(thingId);
+    public Result countCommentsByProductId(@PathVariable Long ProductId) {
+        return commentService.countCommentsByProductId(ProductId);
     }
     @Operation(summary = "更新Comment")
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
@@ -63,7 +65,7 @@ public class CommentController {
     public Result likeComment(@PathVariable Long commentId, @PathVariable Long userId) {
         return commentService.likeComment(commentId, userId);
     }
-
+    @Cacheable("comments")
     @Operation(summary = "获取评论的点赞用户")
     @RequestMapping(value = "/likedUsers/{commentId}", method = RequestMethod.GET)
     @ResponseBody

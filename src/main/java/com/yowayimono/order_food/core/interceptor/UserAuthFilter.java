@@ -20,8 +20,8 @@ public class UserAuthFilter implements WebMvcConfigurer {
         registry.addInterceptor(new HandlerInterceptor() {
                     @Override
                     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-                        String username = request.getHeader("username");
-                        User user = userMapper.findUserByName(username);
+                        String id = request.getHeader("id");
+                        User user = userMapper.findUserById(Integer.parseInt(id));
                         if (user != null && user.getRole().equals("user")) {
                             return true;
                         }

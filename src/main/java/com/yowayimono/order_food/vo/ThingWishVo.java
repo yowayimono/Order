@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class ThingWishVo {
 
-    private Long thingId;
+    private Long ProductId;
 
 
     private Long userId;

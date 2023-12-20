@@ -5,7 +5,7 @@ import com.yowayimono.order_food.service.AdminService;
 import com.yowayimono.order_food.service.UserService;
 import com.yowayimono.order_food.vo.LoginVo;
 import com.yowayimono.order_food.vo.PageSelect;
-import com.yowayimono.order_food.vo.UserVo;
+import com.yowayimono.order_food.vo.RegisterVo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ public class AdminController {
     @Operation(summary = "添加管理员")
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     @ResponseBody
-    public Result Register(@RequestBody UserVo user){
+    public Result Register(@RequestBody RegisterVo user){
         return adminService.Register(user);
     }
 

@@ -5,10 +5,10 @@ import com.yowayimono.order_food.enitiy.Order;
 import com.yowayimono.order_food.vo.OrderVo;
 
 public interface OrderUserService {
-    Result selectAllThings();
-    Result selectThingsWithPagination(Long current, Long size);
+    Result selectAllProducts();
+    Result selectProductsWithPagination(Long current, Long size);
 
-
+    // Result purchase(OrderVo orderVo);
     Result updateOrderPaymentStatus(Long orderId, String newStatus);
     Result insertOrder(OrderVo order);
     Result selectOrderById(Long id);

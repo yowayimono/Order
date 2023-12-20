@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -18,8 +19,9 @@ import java.time.LocalDateTime;
 
 public class OrderVo {
 
-    private Long thingId;
+    // private Long ProductId;
 
+    private List<Long> Products;
 
     private Long userId;
 

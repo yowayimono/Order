@@ -12,8 +12,8 @@ import java.util.List;
 public interface CommentMapper extends BaseMapper<Comment> {
 
     // Create: Insert a new comment
-    @Insert("INSERT INTO or_comment (content, commentTime, likeCount, userId, thingId, deleteTime) " +
-            "VALUES (#{content}, #{commentTime}, #{likeCount}, #{userId}, #{thingId}, #{deleteTime})")
+    @Insert("INSERT INTO or_comment (content, commentTime, likeCount, userId, ProductId, deleteTime) " +
+            "VALUES (#{content}, #{commentTime}, #{likeCount}, #{userId}, #{ProductId}, #{deleteTime})")
     int insertComment(Comment comment);
 
     // Read: Select a comment by its ID
@@ -26,7 +26,7 @@ public interface CommentMapper extends BaseMapper<Comment> {
 
     // Update: Update an existing comment
     @Update("UPDATE or_comment SET content = #{content}, commentTime = #{commentTime}, " +
-            "likeCount = #{likeCount}, userId = #{userId}, thingId = #{thingId}, deleteTime = #{deleteTime} " +
+            "likeCount = #{likeCount}, userId = #{userId}, ProductId = #{ProductId}, deleteTime = #{deleteTime} " +
             "WHERE id = #{id}")
     int updateComment(Comment comment);
 
@@ -42,7 +42,7 @@ public interface CommentMapper extends BaseMapper<Comment> {
     @Select("SELECT * FROM or_comment")
     IPage<Comment> selectCommentsPage(Page<Comment> page);
 
-    // Read: Select comments by ThingId
-    @Select("SELECT * FROM or_comment WHERE thingId = #{thingId}")
-    Comment selectCommentByThingId(@Param("thingId") Long thingId);
+    // Read: Select comments by ProductId
+    @Select("SELECT * FROM or_comment WHERE ProductId = #{ProductId}")
+    Comment selectCommentByProductId(@Param("ProductId") Long ProductId);
 }

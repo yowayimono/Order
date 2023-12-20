@@ -21,40 +21,43 @@ public class User {
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
+    @TableField(value = "username")
     private String username;
 
+    @TableField(value = "password")
     private String password;
 
+    @TableField(value = "nikename")
     private String nickname;
 
-    private String mobile;
+    @TableField(value ="phone")
+    private String phone;
 
+    @TableField(value ="email")
     private String email;
 
+    @TableField(value ="description")
     private String description;
 
-    @NotNull
+
+    @TableField(value ="role")
     private String role;
 
+    @TableField(value ="status")
     private String status;
 
+    @TableField(value ="score")
     private BigDecimal score;
 
+    @TableField(value ="avatar")
     private String avatar;
 
     @TableField(exist = false)
     private MultipartFile avatarFile;
 
-    private String token;
-
     @TableField(value = "createTime")
     private LocalDateTime createTime;
 
-    @TableField(value = "pushEmail")
-    private String pushEmail;
-
-    @TableField(value = "pushSwitch")
-    private String pushSwitch;
-
-
+    @TableField(value = "deletetime")
+    private LocalDateTime deletetime;
 }

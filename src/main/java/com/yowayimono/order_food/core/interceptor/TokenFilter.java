@@ -39,7 +39,7 @@ public class TokenFilter implements WebMvcConfigurer {
 
 
 
-                    redisUtils.expire(token,30, TimeUnit.MINUTES);
+                    redisUtils.expire(token,60 * 24, TimeUnit.MINUTES);
                     return true;
                 }
 

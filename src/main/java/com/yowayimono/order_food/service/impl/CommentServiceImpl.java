@@ -39,7 +39,7 @@ public class CommentServiceImpl implements CommentService {
     public Result insertComment(CommentVo commentVo) {
         try {
             Comment comment = modelMapper.map(commentVo, Comment.class);
-            comment.setCommentTime(Timestamp.valueOf(LocalDateTime.now()).toLocalDateTime());
+            comment.setCreateTime(Timestamp.valueOf(LocalDateTime.now()).toLocalDateTime());
             int result = commentMapper.insert(comment);
             if (result > 0) {
                 return Result.success(666, "插入成功！", comment);
@@ -76,10 +76,10 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public Result selectCommentsByThingId(Long thingId) {
+    public Result selectCommentsByProductId(Long ProductId) {
         try {
             QueryWrapper<Comment> wrapper = new QueryWrapper<>();
-            wrapper.eq("thingId", thingId);
+            wrapper.eq("ProductId", ProductId);
             List<Comment> comments = commentMapper.selectList(wrapper);
             return Result.success(666, "查询成功！", comments);
         } catch (Exception e) {
@@ -117,10 +117,10 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public Result countCommentsByThingId(Long thingId) {
+    public Result countCommentsByProductId(Long ProductId) {
         try {
             QueryWrapper<Comment> wrapper = new QueryWrapper<>();
-            wrapper.eq("thingId", thingId);
+            wrapper.eq("ProductId", ProductId);
             Long count = commentMapper.selectCount(wrapper);
             return Result.success(666, "查询成功！", count);
         } catch (Exception e) {

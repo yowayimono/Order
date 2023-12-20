@@ -20,34 +20,27 @@ public class Order {
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-
-
+    @TableField(value = "status") //已支付，未支付，待评价，已完成，已取消
     private OrderStatus status;
-    @TableField(value = "orderTime")
-    private LocalDateTime orderTime;
+
+    @TableField(value = "createTime")
+    private LocalDateTime createTime;
 
     @TableField(value = "payTime")
     private LocalDateTime payTime;
 
-    @TableField(value = "thingId")
-    private Long thingId;
+    @TableField(value = "deletetime")
+    private LocalDateTime deletetime;
 
     @TableField(value = "userId")
     private Long userId;
 
-    private String gwc;
-
+    @TableField(value = "amount")
     private BigDecimal amount;
 
-    @TableField(value = "orderNumber")
-    private String orderNumber;
+    @TableField(value = "addrId")
+    private Long addrId;
 
-    private String receiverAddress;
-
-    private String receiverName;
-
-    private String receiverPhone;
-
+    @TableField(value = "remark")
     private String remark;
-
 }

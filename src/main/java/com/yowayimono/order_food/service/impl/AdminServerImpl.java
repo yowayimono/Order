@@ -10,7 +10,6 @@ import com.yowayimono.order_food.mapper.UserMapper;
 
 import com.yowayimono.order_food.service.AdminService;
 import com.yowayimono.order_food.vo.*;
-import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +20,7 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 import static com.yowayimono.order_food.core.validator.Validator.*;
-@Slf4j
+
 @Service
 public class AdminServerImpl implements AdminService {
     @Autowired
@@ -35,7 +34,7 @@ public class AdminServerImpl implements AdminService {
     ModelMapper modelmapper;
 
     @Override
-    public Result Register(UserVo user) {
+    public Result Register(RegisterVo user) {
 
         if (findUserByName(user.getUsername()) != null) {
             return Result.fail("用户名已存在");
@@ -49,9 +48,9 @@ public class AdminServerImpl implements AdminService {
             return Result.fail("密码格式不正确");
         }
 
-        if (!isValidPhoneNumber(user.getMobile())) {
-            return Result.fail("电话号码格式不正确");
-        }
+        // if (!isValidPhoneNumber(user.getMobile())) {
+           //  return Result.fail("电话号码格式不正确");
+        // }
 
         // 执行注册逻辑
         AddrAdmin(user);
@@ -95,11 +94,11 @@ public class AdminServerImpl implements AdminService {
 
 
 
-    private void AddrAdmin(UserVo user) {
+    private void AddrAdmin(RegisterVo user) {
         User u = new User();
         u.setUsername(user.getUsername());
         u.setPassword(EncryptionUtils.sha256(user.getPassword()));
-        u.setMobile(user.getMobile());
+        // u.setMobile(user.getMobile());
         u.setRole("admin"); //
         adminmapper.insert(u);
     }
@@ -114,7 +113,8 @@ public class AdminServerImpl implements AdminService {
 
     @Override
     public  Result findUser(PageSelect page){
-        List<User> userlist = userMapper.findUsers(page.getPagesize(), page.getOffect());
+        Long offset = (page.getCurrent() - 1) * page.getPagesize();
+        List<User> userlist = userMapper.findUsers(page.getPagesize(), offset);
 
         List<UserInfo> result = new ArrayList<>();
         for (User user : userlist) {

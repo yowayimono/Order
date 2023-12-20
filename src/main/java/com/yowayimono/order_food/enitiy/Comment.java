@@ -18,10 +18,18 @@ public class Comment {
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
+    @TableField(value = "parentId")
+    private Long parentId;
+
+    @TableField(value = "content")
     private String content;
 
-    @TableField(value = "commentTime")
-    private LocalDateTime commentTime;
+    @TableField(value = "createtime")
+    private LocalDateTime createTime;
+
+    @TableField(value = "deletetime")
+    private LocalDateTime deletetime;
+
 
     @TableField(value = "likeCount")
     private Integer likeCount;
@@ -29,11 +37,9 @@ public class Comment {
     @TableField(value = "userId")
     private Long userId;
 
-    @TableField(value = "thingId")
-    private Long thingId;
+    @TableField(value = "ProductId")
+    private Long ProductId;
 
     @TableField(value = "likedUserIds")
     private String likedUserIds;
-
-
 }

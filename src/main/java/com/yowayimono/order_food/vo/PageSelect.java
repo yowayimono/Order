@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PageSelect {
     private Long pagesize;
-    private Long offect;
+    private Long current;
 }

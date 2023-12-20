@@ -10,13 +10,13 @@ public interface CommentService {
 
     Result selectAllComments();
 
-    Result selectCommentsByThingId(Long thingId);
+    Result selectCommentsByProductId(Long ProductId);
 
     Result updateComment(CommentVo commentVo);
 
     Result deleteCommentById(Long id);
 
-    Result countCommentsByThingId(Long thingId);
+    Result countCommentsByProductId(Long ProductId);
 
     Result likeComment(Long commentId, Long userId);
 

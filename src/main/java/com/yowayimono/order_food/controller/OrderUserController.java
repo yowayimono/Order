@@ -3,7 +3,7 @@ package com.yowayimono.order_food.controller;
 import com.yowayimono.order_food.core.entity.Result;
 import com.yowayimono.order_food.service.OrderAdminService;
 import com.yowayimono.order_food.service.OrderUserService;
-import com.yowayimono.order_food.service.ThingService;
+import com.yowayimono.order_food.service.ProductService;
 import com.yowayimono.order_food.vo.OrderVo;
 import com.yowayimono.order_food.vo.PageSelect;
 import io.swagger.v3.oas.annotations.Operation;
@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/user/order")
 public class OrderUserController {
     @Autowired
-    ThingService thingService;
+    ProductService ProductService;
 
     @Autowired
     private OrderUserService orderService;
-    @Operation(summary = "创建订单")
+    @Operation(summary = "下单一个订单对应多个商品")
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     @ResponseBody
     public Result insertOrder(@RequestBody OrderVo order) {
@@ -61,17 +61,28 @@ public class OrderUserController {
         return orderService.updateOrderPaymentStatus(orderId, newStatus);
     }
 
-    @Operation(summary = "获取所有Things")
-    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
+    /*
+    @Operation(summary = "用户购买商品")
+    @PostMapping("/purchase")
     @ResponseBody
-    public Result getAllThings() {
-        return thingService.selectAllThings();
+    public Result purchase(@RequestBody OrderVo orderVo) {
+        return orderService.purchase(orderVo);
     }
 
-    @Operation(summary = "分页查询Things")
+     */
+
+
+    @Operation(summary = "获取所有Products")
+    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
+    @ResponseBody
+    public Result getAllProducts() {
+        return ProductService.selectAllProducts();
+    }
+
+    @Operation(summary = "分页查询Products")
     @RequestMapping(value = "/getByPage", method = RequestMethod.GET)
     @ResponseBody
-    public Result getThingsByPage(@RequestBody PageSelect page) {
-        return thingService.selectThingsWithPagination(page.getOffect(), page.getPagesize());
+    public Result getProductsByPage(@RequestBody PageSelect page) {
+        return ProductService.selectProductsWithPagination(page);
     }
 }

@@ -30,6 +30,8 @@ public class RedisUtils {
     @Autowired
     private StringRedisTemplate redisTemplate;
 
+
+
     public void setRedisTemplate(StringRedisTemplate redisTemplate) {
         this.redisTemplate = redisTemplate;
     }

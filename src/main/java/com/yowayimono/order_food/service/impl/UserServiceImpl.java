@@ -1,7 +1,5 @@
 package com.yowayimono.order_food.service.impl;
 
-import com.alibaba.fastjson2.JSON;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yowayimono.order_food.core.entity.Result;
@@ -13,14 +11,11 @@ import com.yowayimono.order_food.mapper.UserMapper;
 
 import com.yowayimono.order_food.service.UserService;
 import com.yowayimono.order_food.vo.*;
-import lombok.extern.slf4j.Slf4j;
-import okio.FileMetadata;
-import org.apache.ibatis.annotations.Select;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import springfox.documentation.annotations.Cacheable;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 
 import static com.yowayimono.order_food.core.validator.Validator.*;
 
-@Slf4j
+
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
     @Autowired
@@ -45,9 +40,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         modelmapper = new ModelMapper();
     }
     @Override
-    public Result Register(UserVo user) {
+    public Result Register(RegisterVo user) {
         // 查询数据库，检查用户名是否已存在
-        log.warn(user.toString());
+        // log.warn(user.toString());
         if (userMapper.findUserByName(user.getUsername()) != null) {
             return Result.fail("用户名已存在");
         }
@@ -60,9 +55,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             return Result.fail("密码格式不正确");
         }
 
-        if (!isValidPhoneNumber(user.getMobile())) {
-            return Result.fail("电话号码格式不正确");
-        }
+        // if (!isValidPhoneNumber(user.getMobile())) {
+           // return Result.fail("电话号码格式不正确");
+        // }
 
         // 执行注册逻辑
         AddrUser(user);
@@ -96,30 +91,31 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
         String token = "token_"+id.toString();
 
-        redisutils.setEx( token,u.getId().toString(),30, TimeUnit.MINUTES);
+        redisutils.setEx( token,u.getId().toString(),60 * 24, TimeUnit.MINUTES);
 
-        redisutils.setEx( u.getId().toString(),token,30, TimeUnit.MINUTES);
+        redisutils.setEx( u.getId().toString(),token,60 * 24, TimeUnit.MINUTES);
 
         return Result.success(new TokenAndUser(u.getId(),token,u.getUsername()));
     }
 
 
 
-    private void AddrUser(UserVo user) {
+    private void AddrUser(RegisterVo user) {
         User u = new User();
         u.setUsername(user.getUsername());
         u.setPassword(EncryptionUtils.sha256(user.getPassword()));
-        u.setMobile(user.getMobile());
+        // u.setMobile(user.getMobile());
         u.setRole("user"); //
         userMapper.insert(u);
     }
 
 
- 
 
+    @Cacheable("users")
     @Override
     public  Result findUser(PageSelect page){
-        List<User> userlist = userMapper.findUsers(page.getPagesize(), page.getOffect());
+        Long offset = (page.getCurrent()-1) * page.getPagesize();
+        List<User> userlist = userMapper.findUsers(page.getPagesize(),offset);
 
         List<UserInfo> result = new ArrayList<>();
         for (User user : userlist) {

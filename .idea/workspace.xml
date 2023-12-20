@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1cc263ec-f6db-4464-9b28-3a237f5a96f7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/CollectProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/ErrorLogController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/FileController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/OpLogController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/ProductTagController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/WishController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/core/config/CacheConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/core/holder/ErrLogHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/core/holder/OpLogHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/core/utils/HttpContextUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/core/utils/IpUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/core/utils/QRCodeGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/OrderAndProduct.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/WishProduct.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/mapper/CollectProductMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/mapper/OrderAndProductMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/mapper/ProductMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/mapper/ProductTagMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/mapper/RequestLogMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/mapper/WishMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/CollectProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/ErrorLogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/ProductTagService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/RequestLogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/WishService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/CollectProductServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/ErrorLogServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/ProductTagServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/RequestLogServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/vo/TagVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yml.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/02669227-c406-45b5-8656-8d0817aaaf75.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/066794d5-285c-467c-b2dc-de0b2597b758.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/07dfd814-28a7-408a-ba89-368789592361.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/09c48dc0-9e4b-4304-9798-48e8b659f5ef.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/1085cacc-bd97-451b-b9f0-a5a3bfa0cd13.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/119c87c5-b59e-4936-9fbc-cd8351470dc1.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/1316bb64-a45c-4154-b333-a8cdd74e8c48.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/142aa4f3-e73f-437f-a566-81dde177ff90.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/1693fa26-ea7f-455b-86c6-3d3d73082562.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/1fbbae3b-887b-45f3-8ef9-a2904edee5b6.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/2013778b-2460-4d76-ac9c-90ec5e1d7f2f.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/266001d1-d4bd-41cb-9a09-8ab94991f35d.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/2baa3f45-61ac-4cf4-a837-48c419621dde.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/2c9276dc-b3ee-4328-be6f-a8739eaf3531.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/31ab2951-96f8-4d8e-adee-5fd6c46a4e5d.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/36509a1c-65a9-4e53-b919-4b592c32a04d.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/3a24c6d2-40ab-4bb4-a744-80bf04220e39.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/3b456cbf-0fff-44c1-8adc-5e6261a6b25f.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/3c4b2947-aa34-4e69-8f3c-904e01a6791a.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/3d01f74c-20b3-47f5-8fa9-740c7cddbf07.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/3d5c44b6-de8b-42ac-8a15-910ec593c72a.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/3dc65bc1-32e6-42f5-a426-1cdf0b5b12d2.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/3e96dae1-8f41-4d70-9de0-c9e4c529d81b.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/3f75945f-46c2-4bb7-9d16-3f89dda111bf.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/45fa2ea1-c066-4770-a6d7-57b9846005d9.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/4a5c51b4-f837-40c5-9925-fdb63d494533.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/4aa269a6-4c83-4263-a6cb-740ad108bcd1.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/4e5065a6-4dbd-4c20-97b6-92f1e4192647.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/4ec354f7-8651-4919-b878-342896444193.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/4f965fb9-67b7-4a5c-8bc3-8ef77557e5c2.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/4fdc13c2-1f8c-499b-ac75-c6fa18f54205.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/50b04075-6b81-46a9-90da-4d5af215265b.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/55c42013-b94e-44c6-b839-81471cc04dcb.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/58cd7cef-c4c6-4dd4-8d25-fc8d3e0af8ad.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/5a7fc4c7-4327-4e69-9e5e-82182d19bc03.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/5aa5a488-e3aa-41fd-9d07-5031888e690d.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/5f299ffb-c2f8-4ade-980e-cba7d4938519.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/63538afc-533a-44b1-8e00-7466e0c528ae.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/63e916d9-75c2-4398-bd10-0a578c13031a.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/64c66b8f-b82e-4c7a-b714-9adc32cd5ff6.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/701d29e3-8c39-46c3-95ae-264c87ee13d2.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/70e77e0a-019a-44b3-ac28-8399ef030728.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/7859b029-5bc2-4ece-8546-4408ce8d69bb.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/791e2e6a-6db9-4d54-9f92-cbb9c91c57d9.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/7b730c2e-be16-4914-a754-4ecbafc4cfce.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/7c37dbd8-956a-43d8-a476-0fe7f0b36e95.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/7da385db-6603-4e08-ad6b-2de775dfab68.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/7fc5f045-ac08-4be1-b88a-f07545a0e45c.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/8164fc3b-f47b-4b0e-ba26-50602d4ef276.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/839fb8e2-636e-47bb-a39f-7c6d326de88f.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/88f76aa8-b9dd-4831-b772-e5466e877da9.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/8e50750e-cada-47ff-8fcc-9b531d67e780.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/92b6a1c4-f786-441b-a285-ad8262db560f.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/94c9900c-1922-4616-9d9f-46917eb177ef.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/98be90a3-8c89-436c-a24b-c16ac3c379df.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/9a6c7d68-6856-424d-897c-804bdca2f4a5.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/9da218e9-becd-4b16-aedf-82fc46b6b2ce.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/9f576635-f270-4e3a-92ec-741692d80cb7.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/a0b2c17a-5100-48cd-950f-0e2f889f56ff.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/a281dfe1-3c78-4522-b38e-c53de2ff22c9.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/a2e19f07-c866-4b93-b429-2e8a6937afd1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/af235af7-f71f-416a-9e38-68c3ad26ad20.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/af4777cd-2f23-4c05-9fdd-bd07274f008b.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/b395ea5c-e5a9-4a56-9b5e-f1736078e722.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/b5de8200-ff15-4574-8e38-7642fe952f77.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/b6dbbb0e-262f-4267-83ef-bf527d0c8aa0.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/b7c5ee92-17f1-4040-bed8-6f61f3f5930d.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/b86fc2cd-f135-419d-8039-600d10cf674f.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/b988bb82-552b-4ae9-acfb-b6eff78e221f.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/c9f5f593-9fb2-44cc-bda6-42e0986a3780.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/ca174798-a1fe-4e1a-ab03-8d80d74ad0d4.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/cad0f753-04da-4ebd-aeed-d2ce83cf0b9c.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/d139c44e-d24a-47ac-9f8b-72807b5a3849.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/d9ae4f45-ddcd-4bdd-a670-d1e879880f64.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/debc41a3-20b8-4e01-b17d-fca1a7820574.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/dfbbcffe-362e-42d0-bcdd-063f5b307553.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/e1d4e3a4-06e7-4d96-b60d-71cb8db4b019.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/e98af765-4b0f-4f4b-8e8a-f232133ab100.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/e9bbf322-28a9-4b87-83da-f1028971ac72.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/e9c140a4-e077-4750-8e3d-9db540a150d0.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/ea71ad95-7da2-41c0-9e49-ea2b96f81e53.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/eb71dae5-b84d-4b9a-8e36-5b2adf25c4e2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/ed17adc0-d18a-4ea4-9447-7817fc2a4168.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/ed6410b5-16ea-4f90-b853-c4d6e48a8548.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/edff6448-f92e-4f92-a475-1556ca7a7615.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/f08190e5-502e-476c-a4f9-f7eac0be937b.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/f32992c2-deec-41b3-8338-fdf2f58c31cb.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/f3c07fdd-dada-4eda-ac8a-91c583fd0a85.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/f480ca9b-abc5-4bbf-8a69-e872fc842679.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/f6b8099e-9c89-4795-b3fc-ee128b5b637c.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/f77de97e-b79d-48b7-b6e5-6567df26585f.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/f79c3ceb-9690-4be8-b188-ff91933bffab.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/f7f12f87-7a98-4175-a900-45f4f84f758c.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/f7f8a920-5a79-480e-9288-d3caf83df406.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/fb209198-480a-4e4c-a665-56efa58c1942.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload/image/fe1245c5-0d59-4d50-90d6-ca680267027e.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/banner.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/OrderFoodApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/OrderFoodApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/core/config/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/core/config/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/core/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/AddressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/AddressInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/ClassificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/ClassificationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/NoticeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/OrderAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/OrderAdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/OrderUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/OrderUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/TagController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/DishTagController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/ThingController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/ThingTagController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/ThingWishController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/core/interceptor/AdminAuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/core/interceptor/AdminAuthFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/core/interceptor/TokenFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/core/interceptor/TokenFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/core/interceptor/UserAuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/core/interceptor/UserAuthFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/core/utils/RedisUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/core/utils/RedisUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/AddressInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/Classification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/Categorize.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/ErrorLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/ErrorLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/Notice.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/OpLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/RequestLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/DishTag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/Thing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/ThingCollect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/CollectProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/ThingTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/ProductAndDishTag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/ThingWish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/Wish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/enitiy/VisitData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/mapper/AddressMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/mapper/AddressInfoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/mapper/ClassificationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/mapper/GategorizeMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/mapper/CommentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/mapper/CommentMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/mapper/ErrorLogMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/mapper/ErrorLogMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/mapper/NoticeMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/mapper/OpLogMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/mapper/TagMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/mapper/DishTagMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/mapper/ThingCollectMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/mapper/ThingMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/mapper/ThingTagMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/mapper/ThingWishMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/mapper/VisitDataMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/AddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/AddressInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/ClassificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/GategorizeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/NoticeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/OrderAdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/OrderAdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/OrderUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/OrderUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/TagService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/DishTagService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/TagServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/ThingCollectService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/ThingService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/ThingTagService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/ThingWishService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/AddressServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/AddressInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/AdminServerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/AdminServerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/ClassificationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/GategorizeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/CommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/OrderAdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/OrderAdminServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/OrderUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/OrderUserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/TagServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/DishTagServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/ThingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/ThingTagServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/ThingWishServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/WishServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/vo/CommentVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/vo/CommentVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/vo/OrderVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/vo/OrderVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/vo/PageSelect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/vo/PageSelect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/vo/ThingTagVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/vo/ProductTagVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/vo/ThingWishVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/vo/ThingWishVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/vo/UserAndAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/vo/AddressVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/vo/UserVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yowayimono/order_food/vo/RegisterVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Order_food-0.0.1-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Order_food-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/OrderFoodApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/config/SecurityConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/config/SwaggerConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/controller/AddressController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/controller/AdminController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/controller/ClassificationController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/controller/CommentController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/controller/NoticeController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/controller/OrderAdminController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/controller/OrderUserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/controller/TagController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/controller/ThingController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/controller/ThingTagController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/controller/ThingWishController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/controller/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/annotation/DataSourceType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/annotation/EnableExport.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/annotation/ExportField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/annotation/ImportIndex.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/annotation/RequestLimit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/annotation/SecretParam.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/constant/CommonCodeEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/constant/DataSourceTypeEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/constant/ResultCodeEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/entity/OrderStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/entity/Result.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/entity/ThingStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/holder/DataSourceContextHolder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/interceptor/AdminAuthFilter$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/interceptor/AdminAuthFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/interceptor/CorsFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/interceptor/TokenFilter$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/interceptor/TokenFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/interceptor/UserAuthFilter$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/interceptor/UserAuthFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/interceptor/XssFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/utils/Encryption.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/utils/EncryptionUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/utils/JwtTokenUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/utils/RSAUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/utils/RedisUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/utils/ThreadLocalUtil$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/utils/ThreadLocalUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/core/validator/Validator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/enitiy/Address.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/enitiy/Classification.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/enitiy/Comment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/enitiy/ErrorLog.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/enitiy/Notice.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/enitiy/OpLog.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/enitiy/Order.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/enitiy/Tag.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/enitiy/Thing.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/enitiy/ThingCollect.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/enitiy/ThingTag.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/enitiy/ThingWish.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/enitiy/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/enitiy/VisitData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/mapper/AddressMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/mapper/AdminMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/mapper/ClassificationMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/mapper/CommentMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/mapper/ErrorLogMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/mapper/NoticeMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/mapper/OpLogMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/mapper/OrderMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/mapper/TagMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/mapper/ThingCollectMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/mapper/ThingMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/mapper/ThingTagMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/mapper/ThingWishMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/mapper/UserMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/mapper/VisitDataMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/AddressService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/AdminService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/ClassificationService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/CommentService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/NoticeService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/OrderAdminService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/OrderService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/OrderUserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/TagService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/TagServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/ThingCollectService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/ThingService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/ThingTagService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/ThingWishService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/impl/AddressServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/impl/AdminServerImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/impl/ClassificationServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/impl/CommentServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/impl/OrderAdminServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/impl/OrderUserServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/impl/TagServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/impl/ThingServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/impl/ThingTagServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/impl/ThingWishServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/service/impl/UserServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/vo/CommentVo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/vo/LoginVo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/vo/OrderVo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/vo/PageSelect.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/vo/PageSelectAndUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/vo/ThingTagVo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/vo/ThingVo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/vo/ThingWishVo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/vo/TokenAndUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/vo/UserAndAddress.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/vo/UserInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yowayimono/order_food/vo/UserVo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.yowayimono.order_food.OrderFoodApplicationTests.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.yowayimono.order_food.OrderFoodApplicationTests.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/yowayimono/order_food/OrderFoodApplicationTests.class" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;yowayimono&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="90054376-0b2e-4dcc-a404-03d4715ed92a" />
+        <option name="url" value="https://github.com/yowayimono/Order.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.java" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="D:/apache-maven-3.9.4" />
+        <option name="userSettingsFile" value="C:\Users\zyh16\.m2\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2XWvoIYUpvk8MH1pwAg1VcXKr3T" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/zyh16/Desktop/etakeway&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;0a53189a997849c8aa9de7dd6966ada9&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;redis&quot;,
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.yowayimono.order_food.core.interceptor" />
+      <recent name="com.yowayimono.order_food.config" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\zyh16\Desktop\Order_food\src\main\resources" />
+      <recent name="C:\Users\zyh16\Desktop\Order_food" />
+      <recent name="C:\Users\zyh16\Desktop\Order_food\src\main\java\com\yowayimono\order_food" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\zyh16\Desktop\Order_food\src\main\java\com\yowayimono\order_food" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="com.yowayimono.order_food.service.impl" />
+      <recent name="" />
+      <recent name="com.yowayimono.order_food.core.interceptor" />
+      <recent name="com.yowayimono.order_food.config" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.yowayimono.order_food.controller" />
+      <recent name="com.yowayimono.order_food.vo" />
+      <recent name="com.yowayimono.order_food.core.utils" />
+      <recent name="com.yowayimono.order_food.core.constant" />
+      <recent name="com.yowayimono.order_food.core.interceptor" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.OrderFoodApplication">
+    <configuration name="generated-requests | #7" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="7" requestIdentifier="#7" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="Order_food-0.0.1-SNAPSHOT.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/target/Order_food-0.0.1-SNAPSHOT.jar" />
+      <method v="2" />
+    </configuration>
+    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="Order_food" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yowayimono.order_food.DemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderFoodApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="Order_food" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yowayimono.order_food.OrderFoodApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yowayimono.order_food.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.OrderFoodApplication" />
+        <item itemvalue="JAR Application.Order_food-0.0.1-SNAPSHOT.jar" />
+        <item itemvalue="HTTP Request.generated-requests | #7" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\zyh16\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1cc263ec-f6db-4464-9b28-3a237f5a96f7" name="Changes" comment="" />
+      <created>1698757830716</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1698757830716</updated>
+      <workItem from="1698757831991" duration="331000" />
+      <workItem from="1698758176102" duration="1315000" />
+      <workItem from="1698759514175" duration="47898000" />
+      <workItem from="1698922246981" duration="1011000" />
+      <workItem from="1698925920887" duration="34000" />
+      <workItem from="1698927852410" duration="906000" />
+      <workItem from="1698998855568" duration="5841000" />
+      <workItem from="1699076687090" duration="2067000" />
+      <workItem from="1699079361181" duration="1649000" />
+      <workItem from="1699081040861" duration="525000" />
+      <workItem from="1699237697260" duration="8000" />
+      <workItem from="1699450003359" duration="2008000" />
+      <workItem from="1699960832597" duration="1538000" />
+      <workItem from="1699964603495" duration="52000" />
+      <workItem from="1699970206970" duration="381000" />
+      <workItem from="1700030486191" duration="60000" />
+      <workItem from="1700030844675" duration="669000" />
+      <workItem from="1700031811495" duration="264000" />
+      <workItem from="1700032613431" duration="27000" />
+      <workItem from="1700142729871" duration="29223000" />
+      <workItem from="1700224612449" duration="1858000" />
+      <workItem from="1700226497180" duration="2851000" />
+      <workItem from="1700229367351" duration="2067000" />
+      <workItem from="1700280394036" duration="9477000" />
+      <workItem from="1700292086246" duration="1314000" />
+      <workItem from="1700294346534" duration="91000" />
+      <workItem from="1700302202742" duration="1780000" />
+      <workItem from="1700304622604" duration="5784000" />
+      <workItem from="1700315520072" duration="137000" />
+      <workItem from="1700316125425" duration="6707000" />
+      <workItem from="1700556107752" duration="4096000" />
+      <workItem from="1700568821920" duration="2054000" />
+      <workItem from="1700614701057" duration="339000" />
+      <workItem from="1700659039248" duration="653000" />
+      <workItem from="1700704942198" duration="122000" />
+      <workItem from="1700722354633" duration="15954000" />
+      <workItem from="1700750216418" duration="8656000" />
+      <workItem from="1700800591923" duration="11749000" />
+      <workItem from="1700901449403" duration="1189000" />
+      <workItem from="1700978787959" duration="16000" />
+      <workItem from="1700984695746" duration="1223000" />
+      <workItem from="1701236724744" duration="3337000" />
+      <workItem from="1701245227843" duration="2447000" />
+      <workItem from="1701335441157" duration="2309000" />
+      <workItem from="1701389828861" duration="38000" />
+      <workItem from="1701391317323" duration="111000" />
+      <workItem from="1701391476219" duration="62000" />
+      <workItem from="1701392296680" duration="1515000" />
+      <workItem from="1701393867611" duration="993000" />
+      <workItem from="1701431563961" duration="31000" />
+      <workItem from="1701431689802" duration="964000" />
+      <workItem from="1701439012428" duration="615000" />
+      <workItem from="1701439812895" duration="384000" />
+      <workItem from="1701440210150" duration="87000" />
+      <workItem from="1701481526068" duration="95000" />
+      <workItem from="1701481940491" duration="5000" />
+      <workItem from="1701482166196" duration="905000" />
+      <workItem from="1701485935237" duration="6000" />
+      <workItem from="1701486223775" duration="393000" />
+      <workItem from="1701760428294" duration="18000" />
+      <workItem from="1701760463158" duration="12551000" />
+      <workItem from="1701827331630" duration="598000" />
+      <workItem from="1701849032730" duration="725000" />
+      <workItem from="1701857435128" duration="325000" />
+      <workItem from="1702129011198" duration="4558000" />
+      <workItem from="1702189861800" duration="167000" />
+      <workItem from="1702190402945" duration="602000" />
+      <workItem from="1702611109710" duration="1069000" />
+      <workItem from="1702643403300" duration="603000" />
+      <workItem from="1702644329549" duration="601000" />
+      <workItem from="1702697822842" duration="26000" />
+      <workItem from="1702702645784" duration="6000" />
+      <workItem from="1702706507678" duration="3050000" />
+      <workItem from="1702885721961" duration="300000" />
+      <workItem from="1702887996673" duration="13374000" />
+      <workItem from="1702990477526" duration="73000" />
+      <workItem from="1702990562447" duration="105000" />
+      <workItem from="1702990736778" duration="42000" />
+      <workItem from="1702990811813" duration="712000" />
+      <workItem from="1703058995646" duration="30000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.springframework.beans.factory.NoUniqueBeanDefinitionException" package="org.springframework.beans.factory" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalArgumentException" package="java.lang" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.mybatis.spring.MyBatisSystemException" package="org.mybatis.spring" />
+          <option name="timeStamp" value="4" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

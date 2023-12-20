@@ -17,17 +17,18 @@ import java.time.LocalDateTime;
 public class ErrorLog {
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
-
+    @TableField(value = "ip")
     private String ip;
 
+    @TableField(value = "url")
     private String url;
 
+    @TableField(value = "method")
     private String method;
 
+    @TableField(value = "content")
     private String content;
 
     @TableField(value = "logTime")
     private LocalDateTime logTime;
-
-
 }

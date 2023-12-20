@@ -21,7 +21,7 @@ public class CommentVo {
     private Long userId;
 
 
-    private Long thingId;
+    private Long ProductId;
 
 
 }
